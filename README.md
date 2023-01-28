@@ -1,4 +1,4 @@
-# Shopping Cart App (test)
+# Shopping Cart App
 
 ## Setup
 
