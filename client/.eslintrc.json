@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca75aa9e5c8a01717b394490248d1555825c7c5a
 {
   "extends": [
     "eslint:recommended",
