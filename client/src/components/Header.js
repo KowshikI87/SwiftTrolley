@@ -1,4 +1,4 @@
-const Product = ({ total, disabled }) => {
+const Header = ({ total, disabled }) => {
   return (
     <header>
       <h1>The Shop!</h1>
@@ -12,4 +12,4 @@ const Product = ({ total, disabled }) => {
   )
 }
 
-export default Product
+export default Header;
