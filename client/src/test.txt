@@ -1,0 +1,27 @@
+{
+ project(name: "GraphQL") {
+	name
+	contributors {
+		name
+		role
+	
+	}
+     }
+}
+
+
+And this might return this data:
+
+{
+	"name": "A query language for APIs"
+	"contributors" : [
+	     {
+	         "name": "Kowshik Islam",
+		"role":  "Developer"
+	     },
+	     {
+	         "name": "Matt Johnson",
+		"role":  "Manager"
+	     },
+	]
+}
