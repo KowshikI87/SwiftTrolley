@@ -8,9 +8,16 @@ const InputGroup = ({ htmlFor, name, id }) => {
 }
 
 const AddForm = () => {
+  const handleAddAProductClick = (e) => {
+    e.preventDefault();
+    const addFormDiv = e.target.closest('div');
+    addFormDiv.classList.toggle("add-form");
+    console.log(addFormDiv);
+  }
+  
   return (
     <div className="add-form">
-      <p><a className="button add-product-button">Add A Product</a></p>
+      <p><a className="button add-product-button" onClick={handleAddAProductClick}>Add A Product</a></p>
       <h3>Add Product</h3>
       <form>
         <InputGroup htmlFor="product-name" name="Product Name" id="product-name" />
