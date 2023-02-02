@@ -9,7 +9,7 @@ import productData from "./mockData/data";
 const App = () => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [cartTotal, setCartTotal] = useState([])
+  const [cartTotal, setCartTotal] = useState(0);
 
   const handleDelete = async (id) => {
     console.log(id);
@@ -24,13 +24,14 @@ const App = () => {
     }
   };
 
-  const handleAddToCartClick = async (id) => {
+  const handleAddToCartClick = async (productId) => {
     try {
-      let response = await axios.post("/api/add-to-cart", { id });
-      let newCartItem = response.item;
+      let response = await axios.post("/api/add-to-cart", { productId });
+      console.log('logging response', {response})
+      let newCartItem = response.data.item;
       setCartItems(cartItems.concat(newCartItem))
     } catch (error) {
-      console.log("Error adding item to cart with id", {id})
+      console.log("Error adding item to cart with id", {productId})
     }
   }
 
@@ -42,7 +43,7 @@ const App = () => {
     }
 
     getProducts();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -57,6 +58,7 @@ const App = () => {
   useEffect(() => {
     let cartTotal = 0;
     cartItems.forEach((item) => {
+      console.log('logging item', {item})
       cartTotal += item.price * item.quantity;
     })
     setCartTotal(cartTotal);
