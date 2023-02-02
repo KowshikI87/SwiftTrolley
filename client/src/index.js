@@ -8,6 +8,8 @@ import productData from "./mockData/data";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartTotal, setCartTotal] = useState([])
 
   const handleDelete = async (id) => {
     console.log(id);
@@ -22,6 +24,16 @@ const App = () => {
     }
   };
 
+  const handleAddToCartClick = async (id) => {
+    try {
+      let response = await axios.post("/api/add-to-cart", { id });
+      let newCartItem = response.item;
+      setCartItems(cartItems.concat(newCartItem))
+    } catch (error) {
+      console.log("Error adding item to cart with id", {id})
+    }
+  }
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get('/api/products');
@@ -32,9 +44,27 @@ const App = () => {
     getProducts();
   }, [])
 
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      const response = await axios.get("api/cart");
+      const cartItems = response.data;
+      setCartItems(cartItems);
+    }
+
+    fetchCartItems()
+  }, [])
+
+  useEffect(() => {
+    let cartTotal = 0;
+    cartItems.forEach((item) => {
+      cartTotal += item.price * item.quantity;
+    })
+    setCartTotal(cartTotal);
+  }, [cartItems])
+
   return (
     <div id="app">
-      <Header total={0} />
+      <Header total={cartTotal} />
       {products.map(product => {
         return (
           <Product
@@ -45,6 +75,7 @@ const App = () => {
             quantity={product.quantity}
             disabled={product.quantity > 0 ? false : true}
             onDelete={handleDelete}
+            onAddToCart={handleAddToCartClick}
           />
         )
       })}

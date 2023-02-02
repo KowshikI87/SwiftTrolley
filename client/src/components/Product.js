@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const Product = ({ productId, description, price, quantity, disabled, onDelete, onAddToCart}) => {
   return (
     <div className="product">
