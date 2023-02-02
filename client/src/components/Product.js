@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Product = ({ productId, description, price, quantity, disabled}) => {
+const Product = ({ productId, description, price, quantity, disabled, onDelete}) => {
   const handleAddToCartClick = async () => {
     console.log(productId);
     await axios.post("/api/add-to-cart", { productId })
@@ -15,7 +15,7 @@ const Product = ({ productId, description, price, quantity, disabled}) => {
           <a className={`button add-to-cart ${disabled ? 'disabled' : ''}`} onClick={handleAddToCartClick}>Add to Cart</a>
           <a className="button edit">Edit</a>
         </div>
-        <a className="delete-button"><span>X</span></a>
+        <a className="delete-button" onClick={() => onDelete(id)}><span>X</span></a>
       </div>
     </div>
   )

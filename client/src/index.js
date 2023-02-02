@@ -9,6 +9,17 @@ import productData from "./mockData/data";
 const App = () => {
   const [products, setProducts] = useState([]);
 
+  const handleDelete = (id) => {
+    axios.delete(`/api/products/${id}`)
+      .then(_ => {
+        let newProducts = products.filter(product => product.id !== id)
+        setProducts(newProducts)
+      })
+      .catch(error => {
+        console.error("Error deleting product with id:", id, error);
+      });
+  };
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get('/api/products');
@@ -31,6 +42,8 @@ const App = () => {
             price={product.price}
             quantity={product.quantity}
             disabled={product.quantity > 0 ? false : true}
+            onDelete={handleDelete}
+
           />
         )
       })}
