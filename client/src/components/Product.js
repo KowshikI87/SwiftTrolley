@@ -5,6 +5,7 @@ const Product = ({ productId, description, price, quantity, disabled, onDelete})
     console.log(productId);
     await axios.post("/api/add-to-cart", { productId })
   }
+
   return (
     <div className="product">
       <div className="product-details">
@@ -15,13 +16,13 @@ const Product = ({ productId, description, price, quantity, disabled, onDelete})
           <a className={`button add-to-cart ${disabled ? 'disabled' : ''}`} onClick={handleAddToCartClick}>Add to Cart</a>
           <a className="button edit">Edit</a>
         </div>
-        <a className="delete-button" onClick={() => onDelete(id)}><span>X</span></a>
+        <a className="delete-button" onClick={() => onDelete(productId)}><span>X</span></a>
       </div>
     </div>
   )
 }
 
-export default Product
+export default Product;
 
 
 

@@ -9,15 +9,17 @@ import productData from "./mockData/data";
 const App = () => {
   const [products, setProducts] = useState([]);
 
-  const handleDelete = (id) => {
-    axios.delete(`/api/products/${id}`)
-      .then(_ => {
-        let newProducts = products.filter(product => product.id !== id)
-        setProducts(newProducts)
-      })
-      .catch(error => {
-        console.error("Error deleting product with id:", id, error);
-      });
+  const handleDelete = async (id) => {
+    console.log(id);
+    
+    try {
+      console.log('entered try block')
+      const response = await axios.delete(`/api/products/${id}`);
+      let newProducts = products.filter(product => product._id !== id);
+      setProducts(newProducts);
+    } catch (error) {
+      console.error("Error deleting product with id:", id, error);
+    }
   };
 
   useEffect(() => {
@@ -43,7 +45,6 @@ const App = () => {
             quantity={product.quantity}
             disabled={product.quantity > 0 ? false : true}
             onDelete={handleDelete}
-
           />
         )
       })}

@@ -1,20 +1,25 @@
+import { useState } from 'react';
+
 const InputGroup = ({ htmlFor, name, id }) => {
   return (
     <div className="input-group">
       <label htmlFor={htmlFor}>{name}</label>
-      <input type="text" id={id} defaultValue="" />
+      <input type="text" id={id} value="" />
     </div>
   )
 }
 
 const AddForm = () => {
+  const [productName, setProductName] = useState('');
+  const [price, setPrice] = useState(0);
+
   const handleAddAProductClick = (e) => {
     e.preventDefault();
     const addFormDiv = e.target.closest('div');
     addFormDiv.classList.toggle("add-form");
     console.log(addFormDiv);
   }
-  
+
   return (
     <div className="add-form">
       <p><a className="button add-product-button" onClick={handleAddAProductClick}>Add A Product</a></p>

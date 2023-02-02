@@ -2944,6 +2944,17 @@ var _s = $RefreshSig$();
 const App = ()=>{
     _s();
     const [products, setProducts] = (0, _react.useState)([]);
+    const handleDelete = async (id)=>{
+        console.log(id);
+        try {
+            console.log("entered try block");
+            const response = await (0, _axiosDefault.default).delete(`/api/products/${id}`);
+            let newProducts = products.filter((product)=>product._id !== id);
+            setProducts(newProducts);
+        } catch (error) {
+            console.error("Error deleting product with id:", id, error);
+        }
+    };
     (0, _react.useEffect)(()=>{
         const getProducts = async ()=>{
             const response = await (0, _axiosDefault.default).get("/api/products");
@@ -2959,7 +2970,7 @@ const App = ()=>{
                 total: 0
             }, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 24,
+                lineNumber: 37,
                 columnNumber: 7
             }, undefined),
             products.map((product)=>{
@@ -2968,22 +2979,23 @@ const App = ()=>{
                     description: product.title,
                     price: product.price,
                     quantity: product.quantity,
-                    disabled: product.quantity > 0 ? false : true
+                    disabled: product.quantity > 0 ? false : true,
+                    onDelete: handleDelete
                 }, product._id, false, {
                     fileName: "src/index.js",
-                    lineNumber: 27,
+                    lineNumber: 40,
                     columnNumber: 11
                 }, undefined);
             }),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {}, void 0, false, {
                 fileName: "src/index.js",
-                lineNumber: 37,
+                lineNumber: 51,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/index.js",
-        lineNumber: 23,
+        lineNumber: 36,
         columnNumber: 5
     }, undefined);
 };
@@ -2992,7 +3004,7 @@ _c = App;
 const rootElement = document.getElementById("root");
 (0, _clientDefault.default).createRoot(rootElement).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 43,
+    lineNumber: 57,
     columnNumber: 41
 }, undefined));
 var _c;
@@ -27441,7 +27453,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const Product = ({ productId , description , price , quantity , disabled  })=>{
+const Product = ({ productId , description , price , quantity , disabled , onDelete  })=>{
     const handleAddToCartClick = async ()=>{
         console.log(productId);
         await (0, _axiosDefault.default).post("/api/add-to-cart", {
@@ -27457,7 +27469,7 @@ const Product = ({ productId , description , price , quantity , disabled  })=>{
                     children: description
                 }, void 0, false, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 11,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27465,7 +27477,7 @@ const Product = ({ productId , description , price , quantity , disabled  })=>{
                     children: price
                 }, void 0, false, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 12,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27476,7 +27488,7 @@ const Product = ({ productId , description , price , quantity , disabled  })=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 13,
+                    lineNumber: 14,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27488,7 +27500,7 @@ const Product = ({ productId , description , price , quantity , disabled  })=>{
                             children: "Add to Cart"
                         }, void 0, false, {
                             fileName: "src/components/Product.js",
-                            lineNumber: 15,
+                            lineNumber: 16,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27496,38 +27508,39 @@ const Product = ({ productId , description , price , quantity , disabled  })=>{
                             children: "Edit"
                         }, void 0, false, {
                             fileName: "src/components/Product.js",
-                            lineNumber: 16,
+                            lineNumber: 17,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 14,
+                    lineNumber: 15,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                     className: "delete-button",
+                    onClick: ()=>onDelete(productId),
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: "X"
                     }, void 0, false, {
                         fileName: "src/components/Product.js",
-                        lineNumber: 18,
-                        columnNumber: 38
+                        lineNumber: 19,
+                        columnNumber: 74
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Product.js",
-                    lineNumber: 18,
+                    lineNumber: 19,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/Product.js",
-            lineNumber: 10,
+            lineNumber: 11,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/Product.js",
-        lineNumber: 9,
+        lineNumber: 10,
         columnNumber: 5
     }, undefined);
 };
@@ -31660,6 +31673,8 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _s = $RefreshSig$();
 const InputGroup = ({ htmlFor , name , id  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "input-group",
@@ -31669,27 +31684,30 @@ const InputGroup = ({ htmlFor , name , id  })=>{
                 children: name
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 4,
+                lineNumber: 6,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                 type: "text",
                 id: id,
-                defaultValue: ""
+                value: ""
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 5,
+                lineNumber: 7,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/AddForm.js",
-        lineNumber: 3,
+        lineNumber: 5,
         columnNumber: 5
     }, undefined);
 };
 _c = InputGroup;
 const AddForm = ()=>{
+    _s();
+    const [productName, setProductName] = (0, _react.useState)("");
+    const [price, setPrice] = (0, _react.useState)(0);
     const handleAddAProductClick = (e)=>{
         e.preventDefault();
         const addFormDiv = e.target.closest("div");
@@ -31706,19 +31724,19 @@ const AddForm = ()=>{
                     children: "Add A Product"
                 }, void 0, false, {
                     fileName: "src/components/AddForm.js",
-                    lineNumber: 20,
+                    lineNumber: 25,
                     columnNumber: 10
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 20,
+                lineNumber: 25,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Add Product"
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 21,
+                lineNumber: 26,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -31729,7 +31747,7 @@ const AddForm = ()=>{
                         id: "product-name"
                     }, void 0, false, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 23,
+                        lineNumber: 28,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
@@ -31738,7 +31756,7 @@ const AddForm = ()=>{
                         id: "product-price"
                     }, void 0, false, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 24,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
@@ -31747,7 +31765,7 @@ const AddForm = ()=>{
                         id: "product-quantity"
                     }, void 0, false, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 25,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31758,7 +31776,7 @@ const AddForm = ()=>{
                                 children: "Add"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 27,
+                                lineNumber: 32,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31766,28 +31784,29 @@ const AddForm = ()=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 28,
+                                lineNumber: 33,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 26,
+                        lineNumber: 31,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 22,
+                lineNumber: 27,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/AddForm.js",
-        lineNumber: 19,
+        lineNumber: 24,
         columnNumber: 5
     }, undefined);
 };
+_s(AddForm, "o0RVnbfr6laPM4Irz1fPwhXuXgY=");
 _c1 = AddForm;
 exports.default = AddForm;
 var _c, _c1;
@@ -31799,7 +31818,7 @@ $RefreshReg$(_c1, "AddForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cqXDw":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"cqXDw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = [
