@@ -69,7 +69,7 @@ const App = () => {
   useEffect(() => {
     let cartTotal = 0;
     cartItems.forEach((item) => {
-      console.log('logging item', {item})
+      console.log('logging item in useEffect', {item})
       cartTotal += item.price * item.quantity;
     })
     setCartTotal(cartTotal);
