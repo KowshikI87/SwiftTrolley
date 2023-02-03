@@ -27,7 +27,6 @@ const App = () => {
   const handleAddToCartClick = async (productId) => {
     try {
       let response = await axios.post("/api/add-to-cart", { productId });
-      console.log('logging response', {response})
 
       //set cart items
       let newCartItem = response.data.item;
@@ -69,7 +68,6 @@ const App = () => {
   useEffect(() => {
     let cartTotal = 0;
     cartItems.forEach((item) => {
-      console.log('logging item', {item})
       cartTotal += item.price * item.quantity;
     })
     setCartTotal(cartTotal);
@@ -92,7 +90,10 @@ const App = () => {
           />
         )
       })}
-      <AddForm />
+      <AddForm
+        products={products}
+        setProducts={setProducts}
+      />
     </div>
   );
 }
