@@ -28,8 +28,19 @@ const App = () => {
     try {
       let response = await axios.post("/api/add-to-cart", { productId });
       console.log('logging response', {response})
+
+      //set cart items
       let newCartItem = response.data.item;
       setCartItems(cartItems.concat(newCartItem))
+
+      //reduce quantity of product added
+      let updatedProducts = products.map(product => {
+        if (product._id === productId) {
+          product.quantity -= 1;
+        }
+        return product;
+      })
+      setProducts(updatedProducts);
     } catch (error) {
       console.log("Error adding item to cart with id", {productId})
     }
