@@ -46,6 +46,16 @@ const App = () => {
     }
   }
 
+  const handleCheckoutClick = async () => {
+    try {
+      await axios.post("/api/checkout");
+      console.log("Successfully Checked Out");
+      setCartItems([]);
+    } catch {
+      console.log("Error checking out");
+    }
+  }
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get('/api/products');
@@ -72,26 +82,30 @@ const App = () => {
       console.log('logging item in useEffect', {item})
       cartTotal += item.price * item.quantity;
     })
-    setCartTotal(cartTotal);
+    setCartTotal(cartTotal.toFixed(2));
   }, [cartItems])
 
   return (
     <div id="app">
-      <Header total={cartTotal} />
-      {products.map(product => {
-        return (
-          <Product
-            key={product._id}
-            productId={product._id}
-            description={product.title}
-            price={product.price}
-            quantity={product.quantity}
-            disabled={product.quantity > 0 ? false : true}
-            onDelete={handleDelete}
-            onAddToCart={handleAddToCartClick}
-          />
-        )
-      })}
+      <Header total={cartTotal}
+      numCartItems={+cartItems.length}
+      onCheckout={handleCheckoutClick}/>
+      <div className="product-listing">
+        {products.map(product => {
+          return (
+            <Product
+              key={product._id}
+              productId={product._id}
+              description={product.title}
+              price={product.price}
+              quantity={product.quantity}
+              disabled={product.quantity > 0 ? false : true}
+              onDelete={handleDelete}
+              onAddToCart={handleAddToCartClick}
+            />
+          )
+        })}
+      </div>
       <AddForm />
     </div>
   );
