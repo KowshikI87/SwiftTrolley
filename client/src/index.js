@@ -88,8 +88,8 @@ const App = () => {
   return (
     <div id="app">
       <Header total={cartTotal}
-      numCartItems={+cartItems.length}
-      onCheckout={handleCheckoutClick}/>
+        numCartItems={cartItems.length}
+        onCheckout={handleCheckoutClick}/>
       <div className="product-listing">
         {products.map(product => {
           return (
@@ -106,7 +106,10 @@ const App = () => {
           )
         })}
       </div>
-      <AddForm />
+      <AddForm
+        products={products}
+        setProducts={setProducts}
+      />
     </div>
   );
 }

@@ -10,7 +10,7 @@ const InputGroup = ({ htmlFor, name, id, onChange, inputValue }) => {
   )
 }
 
-const AddForm = () => {
+const AddForm = ({ products, setProducts }) => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
@@ -43,10 +43,20 @@ const AddForm = () => {
 
     try {
       const response = await axios.post('/api/products', product);
-      console.log({response});
+      setProducts(products.concat(response.data));
+      setProductName('');
+      setProductPrice('');
+      setProductQuantity('');
     } catch (error) {
       console.error('Error adding new product.')
     }
+  }
+
+  const handleCancelAddProductClick = (e) => {
+    e.preventDefault();
+    setProductName('');
+    setProductPrice('');
+    setProductQuantity('');
   }
 
   return (
@@ -59,7 +69,7 @@ const AddForm = () => {
         <InputGroup htmlFor="product-quantity" name="Quantity" id="product-quantity" onChange={handleQuantityChange} inputValue={productQuantity} />
         <div className="actions form-actions">
           <a className="button" onClick={handleAddProductClick}>Add</a>
-          <a className="button">Cancel</a>
+          <a className="button" onClick={handleCancelAddProductClick}>Cancel</a>
         </div>
       </form>
     </div>
