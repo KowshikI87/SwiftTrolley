@@ -89,27 +89,31 @@ const App = () => {
     <div id="app">
       <Header total={cartTotal}
         numCartItems={cartItems.length}
-        onCheckout={handleCheckoutClick}/>
-      <div className="product-listing">
-        {products.map(product => {
-          return (
-            <Product
-              key={product._id}
-              productId={product._id}
-              description={product.title}
-              price={product.price}
-              quantity={product.quantity}
-              disabled={product.quantity > 0 ? false : true}
-              onDelete={handleDelete}
-              onAddToCart={handleAddToCartClick}
-            />
-          )
-        })}
-      </div>
-      <AddForm
-        products={products}
-        setProducts={setProducts}
+        onCheckout={handleCheckoutClick}
       />
+      <main>
+        <div className="product-listing">
+          <h2>Products</h2>
+          {products.map(product => {
+            return (
+              <Product
+                key={product._id}
+                productId={product._id}
+                description={product.title}
+                price={product.price}
+                quantity={product.quantity}
+                disabled={product.quantity > 0 ? false : true}
+                onDelete={handleDelete}
+                onAddToCart={handleAddToCartClick}
+              />
+            )
+          })}
+        </div>
+        <AddForm
+          products={products}
+          setProducts={setProducts}
+        />
+      </main>
     </div>
   );
 }

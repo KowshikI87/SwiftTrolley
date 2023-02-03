@@ -143,8 +143,8 @@
     }
   }
 })({"1xC6H":[function(require,module,exports) {
-var Refresh = require("453f214008121ee8");
-var ErrorOverlay = require("5a0722b2f125f922");
+var Refresh = require("73838cbb098761b3");
+var ErrorOverlay = require("124e2b413c6d4d5a");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,11 +163,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"453f214008121ee8":"786KC","5a0722b2f125f922":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"73838cbb098761b3":"786KC","124e2b413c6d4d5a":"1dldy"}],"786KC":[function(require,module,exports) {
 "use strict";
-module.exports = require("76495af7516af528");
+module.exports = require("4eb942c565e43780");
 
-},{"76495af7516af528":"hdge7"}],"hdge7":[function(require,module,exports) {
+},{"4eb942c565e43780":"hdge7"}],"hdge7":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -628,7 +628,7 @@ module.exports = require("76495af7516af528");
 })();
 
 },{}],"1dldy":[function(require,module,exports) {
-var process = require("27cb41042c02037d");
+var process = require("15d19a41c1fd20de");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2358,7 +2358,7 @@ var process = require("27cb41042c02037d");
     ]);
 });
 
-},{"27cb41042c02037d":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"15d19a41c1fd20de":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -3029,34 +3029,51 @@ const App = ()=>{
                 lineNumber: 90,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "product-listing",
-                children: products.map((product)=>{
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productDefault.default), {
-                        productId: product._id,
-                        description: product.title,
-                        price: product.price,
-                        quantity: product.quantity,
-                        disabled: product.quantity > 0 ? false : true,
-                        onDelete: handleDelete,
-                        onAddToCart: handleAddToCartClick
-                    }, product._id, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "product-listing",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "Products"
+                            }, void 0, false, {
+                                fileName: "src/index.js",
+                                lineNumber: 96,
+                                columnNumber: 11
+                            }, undefined),
+                            products.map((product)=>{
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productDefault.default), {
+                                    productId: product._id,
+                                    description: product.title,
+                                    price: product.price,
+                                    quantity: product.quantity,
+                                    disabled: product.quantity > 0 ? false : true,
+                                    onDelete: handleDelete,
+                                    onAddToCart: handleAddToCartClick
+                                }, product._id, false, {
+                                    fileName: "src/index.js",
+                                    lineNumber: 99,
+                                    columnNumber: 15
+                                }, undefined);
+                            })
+                        ]
+                    }, void 0, true, {
                         fileName: "src/index.js",
-                        lineNumber: 96,
-                        columnNumber: 13
-                    }, undefined);
-                })
-            }, void 0, false, {
+                        lineNumber: 95,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
+                        products: products,
+                        setProducts: setProducts
+                    }, void 0, false, {
+                        fileName: "src/index.js",
+                        lineNumber: 112,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/index.js",
-                lineNumber: 93,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
-                products: products,
-                setProducts: setProducts
-            }, void 0, false, {
-                fileName: "src/index.js",
-                lineNumber: 109,
+                lineNumber: 94,
                 columnNumber: 7
             }, undefined)
         ]
@@ -3071,7 +3088,7 @@ _c = App;
 const rootElement = document.getElementById("root");
 (0, _clientDefault.default).createRoot(rootElement).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 118,
+    lineNumber: 122,
     columnNumber: 41
 }, undefined));
 var _c;
@@ -3084,9 +3101,9 @@ $RefreshReg$(_c, "App");
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","axios":"jo6P5","./components/Header":"hsJbF","./components/Product":"8VNuK","./components/AddForm":"9FxpF","./mockData/data":"cqXDw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
-module.exports = require("f160cc5e84447867");
+module.exports = require("c635596bad67310a");
 
-},{"f160cc5e84447867":"48uCM"}],"48uCM":[function(require,module,exports) {
+},{"c635596bad67310a":"48uCM"}],"48uCM":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -3098,7 +3115,7 @@ module.exports = require("f160cc5e84447867");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("b8311a7cd87cd5fb");
+    var React = require("3f3efaf0ac139f58");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3917,11 +3934,11 @@ module.exports = require("f160cc5e84447867");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"b8311a7cd87cd5fb":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"3f3efaf0ac139f58":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
-module.exports = require("5d39a6e98fb9225c");
+module.exports = require("64a1ac24d8e4295d");
 
-},{"5d39a6e98fb9225c":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"64a1ac24d8e4295d":"6YvXz"}],"6YvXz":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -5789,7 +5806,7 @@ module.exports = require("5d39a6e98fb9225c");
 
 },{}],"lOjBx":[function(require,module,exports) {
 "use strict";
-var m = require("eea9fd30d5dcdaa");
+var m = require("7a71a4849738c149");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5808,7 +5825,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"eea9fd30d5dcdaa":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{"7a71a4849738c149":"j6uA9"}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -5822,9 +5839,9 @@ function checkDCE() {
     // a false positive.
     throw new Error("^_^");
 }
-module.exports = require("e8fad9b6333fd1cc");
+module.exports = require("45aed6f6d80fa95d");
 
-},{"e8fad9b6333fd1cc":"3iA9v"}],"3iA9v":[function(require,module,exports) {
+},{"45aed6f6d80fa95d":"3iA9v"}],"3iA9v":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -5837,8 +5854,8 @@ module.exports = require("e8fad9b6333fd1cc");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("da7105328ffd39a3");
-    var Scheduler = require("d06a5ae28e0e29a5");
+    var React = require("5c07a5d826377199");
+    var Scheduler = require("c34bf07001aa54a4");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26809,11 +26826,11 @@ module.exports = require("e8fad9b6333fd1cc");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"da7105328ffd39a3":"21dqq","d06a5ae28e0e29a5":"juvHo"}],"juvHo":[function(require,module,exports) {
+},{"5c07a5d826377199":"21dqq","c34bf07001aa54a4":"juvHo"}],"juvHo":[function(require,module,exports) {
 "use strict";
-module.exports = require("82fbb535bb61b683");
+module.exports = require("6327ec5598b7ec24");
 
-},{"82fbb535bb61b683":"RqdIf"}],"RqdIf":[function(require,module,exports) {
+},{"6327ec5598b7ec24":"RqdIf"}],"RqdIf":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -28237,7 +28254,7 @@ var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
 // temporary hotfix to avoid circular references until AxiosURLSearchParams is refactored
 var _formDataJs = require("../platform/node/classes/FormData.js");
 var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
-var Buffer = require("f3dcbb78d39e6e36").Buffer;
+var Buffer = require("7c26a59a97527da4").Buffer;
 "use strict";
 /**
  * Determines if the given thing is a array or js object.
@@ -28352,7 +28369,7 @@ const predicates = (0, _utilsJsDefault.default).toFlatObject((0, _utilsJsDefault
                 key = metaTokens ? key : key.slice(0, -2);
                 // eslint-disable-next-line no-param-reassign
                 value = JSON.stringify(value);
-            } else if ((0, _utilsJsDefault.default).isArray(value) && isFlatArray(value) || ((0, _utilsJsDefault.default).isFileList(value) || (0, _utilsJsDefault.default).endsWith(key, "[]")) && (arr = (0, _utilsJsDefault.default).toArray(value))) {
+            } else if ((0, _utilsJsDefault.default).isArray(value) && isFlatArray(value) || (0, _utilsJsDefault.default).isFileList(value) || (0, _utilsJsDefault.default).endsWith(key, "[]") && (arr = (0, _utilsJsDefault.default).toArray(value))) {
                 // eslint-disable-next-line no-param-reassign
                 key = removeBrackets(key);
                 arr.forEach(function each(el, index) {
@@ -28392,15 +28409,15 @@ const predicates = (0, _utilsJsDefault.default).toFlatObject((0, _utilsJsDefault
 }
 exports.default = toFormData;
 
-},{"f3dcbb78d39e6e36":"fCgem","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../platform/node/classes/FormData.js":"aFlee","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fCgem":[function(require,module,exports) {
+},{"7c26a59a97527da4":"fCgem","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../platform/node/classes/FormData.js":"aFlee","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fCgem":[function(require,module,exports) {
 /*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <https://feross.org>
  * @license  MIT
  */ /* eslint-disable no-proto */ "use strict";
-var base64 = require("2dc2db678cc16955");
-var ieee754 = require("1311f45a576ea2f");
+var base64 = require("406d9c29711bc90e");
+var ieee754 = require("f1e45d657bad2604");
 var customInspectSymbol = typeof Symbol === "function" && typeof Symbol["for"] === "function" // eslint-disable-line dot-notation
  ? Symbol["for"]("nodejs.util.inspect.custom") // eslint-disable-line dot-notation
  : null;
@@ -29622,7 +29639,7 @@ var hexSliceLookupTable = function() {
     return table;
 }();
 
-},{"2dc2db678cc16955":"eIiSV","1311f45a576ea2f":"cO95r"}],"eIiSV":[function(require,module,exports) {
+},{"406d9c29711bc90e":"eIiSV","f1e45d657bad2604":"cO95r"}],"eIiSV":[function(require,module,exports) {
 "use strict";
 exports.byteLength = byteLength;
 exports.toByteArray = toByteArray;
@@ -30437,7 +30454,7 @@ class AxiosHeaders {
         header = normalizeHeader(header);
         if (header) {
             const key = (0, _utilsJsDefault.default).findKey(this, header);
-            return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
+            return !!(key && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
         }
         return false;
     }
@@ -31222,7 +31239,7 @@ exports.default = {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "VERSION", ()=>VERSION);
-const VERSION = "1.3.1";
+const VERSION = "1.3.0";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"45wzn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -31487,7 +31504,7 @@ $RefreshReg$(_c, "Header");
 }
 },{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"km3Ru":[function(require,module,exports) {
 "use strict";
-var Refresh = require("ae3e318edf3499ea");
+var Refresh = require("d34beca2678572ba");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -31618,7 +31635,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"ae3e318edf3499ea":"786KC"}],"8VNuK":[function(require,module,exports) {
+},{"d34beca2678572ba":"786KC"}],"8VNuK":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5065 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -31775,11 +31792,12 @@ const AddForm = ({ products , setProducts  })=>{
     const [productName, setProductName] = (0, _react.useState)("");
     const [productPrice, setProductPrice] = (0, _react.useState)("");
     const [productQuantity, setProductQuantity] = (0, _react.useState)("");
+    const [showAddProductButton, setShowAddProductButton] = (0, _react.useState)(true);
     const handleAddAProductDisplayClick = (e)=>{
         e.preventDefault();
         const addFormDiv = e.target.closest("div");
         addFormDiv.classList.toggle("add-form");
-        console.log(addFormDiv);
+        setShowAddProductButton(false);
     };
     const handleNameChange = (e)=>{
         setProductName(e.target.value);
@@ -31815,108 +31833,115 @@ const AddForm = ({ products , setProducts  })=>{
         setProductName("");
         setProductPrice("");
         setProductQuantity("");
+        const addFormDiv = e.target.closest("form").closest("div");
+        addFormDiv.classList.toggle("add-form");
+        setShowAddProductButton(true);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "add-form",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                children: showAddProductButton ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                     className: "button add-product-button",
                     onClick: handleAddAProductDisplayClick,
                     children: "Add A Product"
                 }, void 0, false, {
                     fileName: "src/components/AddForm.js",
-                    lineNumber: 64,
-                    columnNumber: 10
-                }, undefined)
+                    lineNumber: 68,
+                    columnNumber: 34
+                }, undefined) : null
             }, void 0, false, {
                 fileName: "src/components/AddForm.js",
-                lineNumber: 64,
+                lineNumber: 68,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "Add Product"
-            }, void 0, false, {
-                fileName: "src/components/AddForm.js",
-                lineNumber: 65,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            showAddProductButton ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
-                        htmlFor: "product-name",
-                        name: "Product Name",
-                        id: "product-name",
-                        onChange: handleNameChange,
-                        inputValue: productName
-                    }, void 0, false, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 67,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
-                        htmlFor: "product-price",
-                        name: "Price",
-                        id: "product-price",
-                        onChange: handlePriceChange,
-                        inputValue: productPrice
-                    }, void 0, false, {
-                        fileName: "src/components/AddForm.js",
-                        lineNumber: 68,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
-                        htmlFor: "product-quantity",
-                        name: "Quantity",
-                        id: "product-quantity",
-                        onChange: handleQuantityChange,
-                        inputValue: productQuantity
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: "Add Product"
                     }, void 0, false, {
                         fileName: "src/components/AddForm.js",
                         lineNumber: 69,
-                        columnNumber: 9
+                        columnNumber: 40
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "actions form-actions",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                className: "button",
-                                onClick: handleAddProductClick,
-                                children: "Add"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
+                                htmlFor: "product-name",
+                                name: "Product Name",
+                                id: "product-name",
+                                onChange: handleNameChange,
+                                inputValue: productName
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
                                 lineNumber: 71,
-                                columnNumber: 11
+                                columnNumber: 9
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                className: "button",
-                                onClick: handleCancelAddProductClick,
-                                children: "Cancel"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
+                                htmlFor: "product-price",
+                                name: "Price",
+                                id: "product-price",
+                                onChange: handlePriceChange,
+                                inputValue: productPrice
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
                                 lineNumber: 72,
-                                columnNumber: 11
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(InputGroup, {
+                                htmlFor: "product-quantity",
+                                name: "Quantity",
+                                id: "product-quantity",
+                                onChange: handleQuantityChange,
+                                inputValue: productQuantity
+                            }, void 0, false, {
+                                fileName: "src/components/AddForm.js",
+                                lineNumber: 73,
+                                columnNumber: 9
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "actions form-actions",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                        className: "button",
+                                        onClick: handleAddProductClick,
+                                        children: "Add"
+                                    }, void 0, false, {
+                                        fileName: "src/components/AddForm.js",
+                                        lineNumber: 75,
+                                        columnNumber: 11
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                        className: "button",
+                                        onClick: handleCancelAddProductClick,
+                                        children: "Cancel"
+                                    }, void 0, false, {
+                                        fileName: "src/components/AddForm.js",
+                                        lineNumber: 76,
+                                        columnNumber: 11
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/AddForm.js",
+                                lineNumber: 74,
+                                columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
                         lineNumber: 70,
-                        columnNumber: 9
+                        columnNumber: 7
                     }, undefined)
                 ]
-            }, void 0, true, {
-                fileName: "src/components/AddForm.js",
-                lineNumber: 66,
-                columnNumber: 7
-            }, undefined)
+            }, void 0, true)
         ]
     }, void 0, true, {
         fileName: "src/components/AddForm.js",
-        lineNumber: 63,
+        lineNumber: 67,
         columnNumber: 5
     }, undefined);
 };
-_s(AddForm, "anBzLtVLzJ8Ip6Q/PoaimHuy6LA=");
+_s(AddForm, "nDden5eXzPxVHwohnytefBANl/0=");
 _c1 = AddForm;
 exports.default = AddForm;
 var _c, _c1;

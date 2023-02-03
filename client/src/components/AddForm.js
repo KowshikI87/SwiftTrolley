@@ -14,12 +14,13 @@ const AddForm = ({ products, setProducts }) => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
+  const [showAddProductButton, setShowAddProductButton] = useState(true);
 
   const handleAddAProductDisplayClick = (e) => {
     e.preventDefault();
     const addFormDiv = e.target.closest('div');
     addFormDiv.classList.toggle("add-form");
-    console.log(addFormDiv);
+    setShowAddProductButton(false);
   }
 
   const handleNameChange = (e) => {
@@ -57,12 +58,15 @@ const AddForm = ({ products, setProducts }) => {
     setProductName('');
     setProductPrice('');
     setProductQuantity('');
+    const addFormDiv = e.target.closest('form').closest('div');
+    addFormDiv.classList.toggle("add-form");
+    setShowAddProductButton(true);
   }
 
   return (
     <div className="add-form">
-      <p><a className="button add-product-button" onClick={handleAddAProductDisplayClick}>Add A Product</a></p>
-      <h3>Add Product</h3>
+      <p>{showAddProductButton ? <a className="button add-product-button" onClick={handleAddAProductDisplayClick}>Add A Product</a> : null}</p>
+      {showAddProductButton ? null : <><h3>Add Product</h3>
       <form>
         <InputGroup htmlFor="product-name" name="Product Name" id="product-name" onChange={handleNameChange} inputValue={productName} />
         <InputGroup htmlFor="product-price" name="Price" id="product-price" onChange={handlePriceChange} inputValue={productPrice} />
@@ -72,6 +76,7 @@ const AddForm = ({ products, setProducts }) => {
           <a className="button" onClick={handleCancelAddProductClick}>Cancel</a>
         </div>
       </form>
+      </>}
     </div>
   );
 }
