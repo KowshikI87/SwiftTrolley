@@ -1,14 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-
-const InputGroup = ({ htmlFor, name, id, onChange, inputValue }) => {
-  return (
-    <div className="input-group">
-      <label htmlFor={htmlFor}>{name}</label>
-      <input type="text" id={id} value={inputValue} onChange={onChange} />
-    </div>
-  )
-}
+import InputGroup from './InputGroup';
 
 const AddForm = ({ onAddProduct }) => {
   const [productName, setProductName] = useState('');
