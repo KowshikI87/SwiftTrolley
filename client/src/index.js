@@ -28,8 +28,25 @@ const App = () => {
       console.log("logging response for add to cart click", {response})
 
       //set cart items
-      let newCartItem = response.data.item;
-      setCartItems(cartItems.concat(newCartItem))
+      //if the item already exists in cart then increase its quantity by 1
+      //else add the new item to the cart
+      let addedCartItem = response.data.item;
+      let existingCartItem = cartItems.find(item => item._id ===  addedCartItem._id)
+
+      let newCartItems;
+      if (existingCartItem) {
+        newCartItems = cartItems.map(cartItem => {
+          let newCartItem = {...cartItem};
+          if (cartItem._id === existingCartItem._id) {
+            newCartItem.quantity += 1
+          }
+          return newCartItem
+        })
+      } else {
+        newCartItems = cartItems.concat(addedCartItem)
+      }
+
+      setCartItems(newCartItems)
 
       //reduce quantity of product added
       let updatedProducts = products.map(product => {
@@ -52,6 +69,11 @@ const App = () => {
     } catch {
       console.log("Error checking out");
     }
+  }
+
+  const handleAddProductCick = async (product) => {
+    const response = await axios.post('/api/products', product);
+    setProducts(products.concat(response.data));
   }
 
   useEffect(() => {
@@ -107,8 +129,7 @@ const App = () => {
         </div>
       </main>
       <AddForm
-        products={products}
-        setProducts={setProducts}
+        onAddProduct={handleAddProductCick}
       />
     </div>
   );

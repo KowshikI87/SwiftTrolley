@@ -10,16 +10,16 @@ const InputGroup = ({ htmlFor, name, id, onChange, inputValue }) => {
   )
 }
 
-const AddForm = ({ products, setProducts }) => {
+const AddForm = ({ onAddProduct }) => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productQuantity, setProductQuantity] = useState('');
+  const [addProductFormVisible, setAddProductFormVisible] = useState(false);
 
-  const handleAddAProductDisplayClick = (e) => {
+
+  const handleAddAProductFormClick = (e) => {
     e.preventDefault();
-    const addFormDiv = e.target.closest('div');
-    addFormDiv.classList.toggle("add-form");
-    console.log(addFormDiv);
+    setAddProductFormVisible(true)
   }
 
   const handleNameChange = (e) => {
@@ -41,15 +41,12 @@ const AddForm = ({ products, setProducts }) => {
     let quantity = parseInt(productQuantity, 10);
     let product = { title, price, quantity };
 
-    try {
-      const response = await axios.post('/api/products', product);
-      setProducts(products.concat(response.data));
-      setProductName('');
-      setProductPrice('');
-      setProductQuantity('');
-    } catch (error) {
-      console.error('Error adding new product.')
-    }
+    console.log("about to addd product", {product})
+    await onAddProduct(product, setProductName, setProductPrice, setProductQuantity);
+    console.log("done adding product. Going to reset the fields")
+    setProductName('');
+    setProductPrice('');
+    setProductQuantity('');
   }
 
   const handleCancelAddProductClick = (e) => {
@@ -57,11 +54,12 @@ const AddForm = ({ products, setProducts }) => {
     setProductName('');
     setProductPrice('');
     setProductQuantity('');
+    setAddProductFormVisible(false);
   }
 
   return (
-    <div className="add-form">
-      <p><a className="button add-product-button" onClick={handleAddAProductDisplayClick}>Add A Product</a></p>
+    <div className={`add-form ${addProductFormVisible? "visible" : ""}`}>
+      <p><a className="button add-product-button" onClick={handleAddAProductFormClick}>Add A Product</a></p>
       <h3>Add Product</h3>
       <form>
         <InputGroup htmlFor="product-name" name="Product Name" id="product-name" onChange={handleNameChange} inputValue={productName} />
