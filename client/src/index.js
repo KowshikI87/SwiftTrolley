@@ -13,10 +13,7 @@ const App = () => {
   const [cartTotal, setCartTotal] = useState(0);
 
   const handleDelete = async (id) => {
-    console.log(id);
-    
     try {
-      console.log('entered try block')
       const response = await axios.delete(`/api/products/${id}`);
       let newProducts = products.filter(product => product._id !== id);
       setProducts(newProducts);
@@ -28,7 +25,7 @@ const App = () => {
   const handleAddToCartClick = async (productId) => {
     try {
       let response = await axios.post("/api/add-to-cart", { productId });
-      console.log('logging response', {response})
+      console.log("logging response for add to cart click", {response})
 
       //set cart items
       let newCartItem = response.data.item;
@@ -89,7 +86,7 @@ const App = () => {
   return (
     <div id="app">
       <Header total={cartTotal}
-        numCartItems={cartItems.length}
+        cartItems={cartItems}
         onCheckout={handleCheckoutClick}/>
       <main>
         <div className="product-listing">
