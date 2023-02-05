@@ -1,8 +1,8 @@
-const InputGroup = ({ htmlFor, name, id, onChange, inputValue }) => {
+const InputGroup = ({ htmlFor, name, type, id, value, onChange }) => {
   return (
     <div className="input-group">
       <label htmlFor={htmlFor}>{name}</label>
-      <input type="text" id={id} value={inputValue} onChange={onChange} />
+      <input type={type} id={id} value={value} onChange={onChange} />
     </div>
   )
 }
