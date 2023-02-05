@@ -76,6 +76,27 @@ const App = () => {
     setProducts(products.concat(response.data));
   }
 
+  const handleUpdateProduct = async (id, description, price, quantity) => {
+    try{
+      const response = await axios.put(`/api/products/${id}`, {title: description, price:price, quantity:quantity} )
+      console.log("successfully updated product", response.data)
+
+      let newProducts = products.map(product => {
+        let newProduct = {...product}
+        if (product._id === response.data._id) {
+          newProduct.title = description
+          newProduct.quantity = quantity
+          newProduct.price = price
+        }
+        return newProduct
+      }) 
+
+      setProducts(newProducts)
+    } catch(error) {
+      console.log("could not uddate the product with product id", id)
+    }
+  }
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get('/api/products');
@@ -123,6 +144,7 @@ const App = () => {
                 disabled={product.quantity > 0 ? false : true}
                 onDelete={handleDelete}
                 onAddToCart={handleAddToCartClick}
+                onUpdateProduct={handleUpdateProduct}
               />
             )
           })}

@@ -1,34 +1,37 @@
 import InputGroup from './InputGroup';
+import useField from '../hooks/formFieldHook';
 
-const EditForm = () {
+const EditForm = ({productId, desription, price, quantity, onUpdateProduct, onCancelEditProduct}) => {
+  const productName = useField("text", desription)
+  const productPrice = useField("text", price)
+  const productQuantity = useField("text", quantity)
+
   return (
-    <div class="edit-form">
-    <h3>Edit Product </h3>
-      <form>
-        <InputGroup htmlFor="product-name" name="Product Name" id="product-name"   />
-        //going to have 3 input groups
-        //would conditinally render the edit form
-        //"update" click would update the produt and rerender the form
-        //"cancel" would hide the edit form
+    <div className="edit-form">
+      <h3>Edit Product </h3>
+        <form>
+        <InputGroup htmlFor="product-name" name="Product Name" 
+          id="product-name" type={productName.type} onChange={productName.onChange} 
+          value={productName.value} />
 
-      </form>
+        <InputGroup htmlFor="product-price" name="Price" 
+          id="product-price" type={productPrice.type} onChange={productPrice.onChange} 
+          value={productPrice.value} />
+        
+        <InputGroup htmlFor="product-quantity" name="Quantity" 
+          id="product-quantity" type={productQuantity.type} onChange={productQuantity.onChange} 
+          value={productQuantity.value}/>
+
+
+        <div className="actions form-actions">
+          <a className="button" onClick={() => onUpdateProduct(productId, productName.value, productPrice.value, productQuantity.value) }>Update</a>
+          <a className="button" onClick={onCancelEditProduct}>Cancel</a>
+        </div>
+
+        </form>
     </div>
 
   )
 }
 
-
-
-<InputGroup htmlFor="product-name" name="Product Name" id="product-name" onChange={handleNameChange} inputValue={productName} />
-
-
-
-
-const InputGroup = ({ htmlFor, name, id, onChange, inputValue }) => {
-  return (
-    <div className="input-group">
-      <label htmlFor={htmlFor}>{name}</label>
-      <input type="text" id={id} value={inputValue} onChange={onChange} />
-    </div>
-  )
-}
+export default EditForm
