@@ -76,15 +76,15 @@ const App = () => {
     setProducts(products.concat(response.data));
   }
 
-  const handleUpdateProduct = async (id, description, price, quantity) => {
+  const handleUpdateProduct = async (id, title, price, quantity) => {
     try{
-      const response = await axios.put(`/api/products/${id}`, {title: description, price:price, quantity:quantity} )
+      const response = await axios.put(`/api/products/${id}`, {title: title, price:price, quantity:quantity} )
       console.log("successfully updated product", response.data)
 
       let newProducts = products.map(product => {
         let newProduct = {...product}
         if (product._id === response.data._id) {
-          newProduct.title = description
+          newProduct.title = title
           newProduct.quantity = quantity
           newProduct.price = price
         }
@@ -138,7 +138,7 @@ const App = () => {
               <Product
                 key={product._id}
                 productId={product._id}
-                description={product.title}
+                title={product.title}
                 price={product.price}
                 quantity={product.quantity}
                 disabled={product.quantity > 0 ? false : true}
