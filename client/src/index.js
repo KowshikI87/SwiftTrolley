@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Product from "./components/Product";
 import AddForm from "./components/AddForm";
+import CartItems from "./components/CartItems";
 import productData from "./mockData/data";
 
 const App = () => {
@@ -90,22 +91,24 @@ const App = () => {
       <Header total={cartTotal}
         numCartItems={cartItems.length}
         onCheckout={handleCheckoutClick}/>
-      <div className="product-listing">
-        {products.map(product => {
-          return (
-            <Product
-              key={product._id}
-              productId={product._id}
-              description={product.title}
-              price={product.price}
-              quantity={product.quantity}
-              disabled={product.quantity > 0 ? false : true}
-              onDelete={handleDelete}
-              onAddToCart={handleAddToCartClick}
-            />
-          )
-        })}
-      </div>
+      <main>
+        <div className="product-listing">
+          {products.map(product => {
+            return (
+              <Product
+                key={product._id}
+                productId={product._id}
+                description={product.title}
+                price={product.price}
+                quantity={product.quantity}
+                disabled={product.quantity > 0 ? false : true}
+                onDelete={handleDelete}
+                onAddToCart={handleAddToCartClick}
+              />
+            )
+          })}
+        </div>
+      </main>
       <AddForm
         products={products}
         setProducts={setProducts}
